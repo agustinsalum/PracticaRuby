@@ -3,15 +3,11 @@
 # sustituyendo cada letra por la letra que está trece posiciones por
 # delante en el alfabeto
 
+# Ejemplo con 'A': En to_str reemplaza por el primer from_str (que seria N-Z). 
+# Ejemplo con 'Z': Sobrepasa el primer from_str y sigue verificando en el siguiente (A-M)
 def rot13(string)
     string.tr("A-Za-z", "N-ZA-Mn-za-m")
 end
-
-def rot13_con_cantidad(cadena,cantidad)
-    nueva_cadena=cadena.split("")
-    (nueva_cadena.map { |c| (c.ord + cantidad).chr if c.match?(/[a-zA-Z0-9&_\.-]/)}).join('')
-end
   
-p rot13("¡abcd!")
-p rot13_con_cantidad("¡abcd!",13)
+p rot13("¡aZ!")
 
