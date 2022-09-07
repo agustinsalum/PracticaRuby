@@ -12,7 +12,6 @@ end
 
 def listar(dic)
     str=''
-    i=0
     dic.each.each_with_index do |key, value, index|
         str = str + "#{index}. #{key}: #{value}\n"
     end
