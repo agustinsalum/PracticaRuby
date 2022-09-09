@@ -3,12 +3,23 @@
 # sustituyendo cada letra por la letra que está trece posiciones por
 # delante en el alfabeto
 
-def rot13_con_cantidad(string, cantidad)
-    string.tr("A-Z-a-z","#{(('A').ord+cantidad).chr}-#{(('Z').ord+cantidad).chr}-#{(('a').ord+cantidad).chr}-#{(('z').ord+cantidad).chr}")
+def descodificar(letra,cantidad)
+    case letra
+    when 'a'..'m', 'A'..'M'
+        letra.ord + cantidad
+    when 'n'..'z', 'N'..'Z'
+        letra.ord + cantidad
+    else
+        letra.ord
+    end.chr
+end
+
+
+def rot13_con_map_cantidad(cadena,cantidad)
+    ((cadena.chars).map { |letra|  descodificar(letra,cantidad) }).join
 end
 
 
   
-p rot13_con_cantidad('¡Agustin!',3)
-p rot13_con_cantidad('zZ',2)
+p rot13_con_map_cantidad('AaZz',3)
 

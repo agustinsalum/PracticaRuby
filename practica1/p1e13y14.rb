@@ -1,21 +1,12 @@
 
 
 def listar_mejorada(dic,pegamento=": ")
-    str=''
-    i=0
-    dic.each.each_with_index do |key, value, index|
-        i=i+1
-        str = str + "#{i}. #{key}#{pegamento} #{value}\n"
-    end
-    str
+    dic.each.with_index(1).inject("") {|acc, ((k,v), i)| acc += "#{i} #{pegamento} #{k}: #{v}\n"}
 end
 
 def listar(dic)
-    str=''
-    dic.each.each_with_index do |key, value, index|
-        str = str + "#{index}. #{key}: #{value}\n"
-    end
-    str
+    # index(1) le decimos desde que numero empieza el indice
+    dic.each.with_index(1).inject("") {|acc, ((k,v), i)| acc += "#{i}. #{k}: #{v}\n"}
 end
 
 

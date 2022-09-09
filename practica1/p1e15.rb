@@ -8,6 +8,23 @@
 def rot13(string)
     string.tr("A-Za-z", "N-ZA-Mn-za-m")
 end
-  
+
+def descodificar(letra)
+    case letra
+    when 'a'..'m', 'A'..'M'
+        letra.ord + 13
+    when 'n'..'z', 'N'..'Z'
+        letra.ord - 13
+    else
+        letra.ord
+    end.chr
+end
+
+
+def rot13_con_map(cadena)
+    ((cadena.chars).map { |letra|  descodificar(letra) }).join
+end
+
 p rot13("¡aZ!")
+p rot13_con_map("A")
 

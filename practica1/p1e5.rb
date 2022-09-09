@@ -1,7 +1,7 @@
 
 def reemplazar (string)
-    string['{'] = 'do\n'  if string.include?('{')
-    string['}'] = '\nend' if string.include?('}')
+    string = string.gsub('{','do\n')  
+    string = string.gsub('}','\nend')
     string
  end
 

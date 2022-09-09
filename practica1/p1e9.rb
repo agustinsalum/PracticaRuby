@@ -2,28 +2,22 @@
 
 # Retorna el string con los caracteres en orden inverso.
 def string_reverso(cadena)
-    nueva_cadena=""
-    lista=cadena.split(' ')
-    lista.each { |palabra| nueva_cadena= "#{nueva_cadena} #{palabra.reverse}" }
-    p nueva_cadena.strip
+    ((lista=cadena.split(' ')).inject("") { |acumulador, ((palabra), i)| acumulador += "#{palabra.reverse}"}).strip
 end
 
 # Elimina los espacios en blanco que contenga.
 def string_sin_espacio(cadena)
-    p cadena.delete(" ")
-    #p cadena.gsub(/\s+/, "")
+    cadena.delete(" ")
+    #cadena.gsub(/\s+/, "")
 end
 
 # Retorna un arreglo con cada uno de los caracteres convertidos a su correspondiente valor ASCII.
 def string_a_arreglo_ascii(cadena)
-    arreglo=[]
-    lista=cadena.delete(" ").chars
-    lista.each { |letra| arreglo << letra.ord }
-    p arreglo
+    (cadena.delete(" ").chars).inject([]) { |acumulador, ((letra), i)| acumulador << "#{letra.ord}"}
 end
 
-# Cambia las vocales por números
-def string_remplaza_vocal(cadena)
+# Cambia las vocales por números. Con when
+def string_remplaza_vocal_hash(cadena)
     arreglo=[]
     lista=cadena.delete(" ").chars
     lista.each do 
@@ -38,11 +32,25 @@ def string_remplaza_vocal(cadena)
             arreglo << letra
         end 
     end
-    p arreglo
+     arreglo
+end
+
+# Cambia las vocales por números. Con diccionario
+def string_remplaza_vocal_dicc(cadena)
+    diccionario = {'a'=> 4,'A'=> 4,'e'=> 3,'E'=> 4,'i'=> 1,'I'=> 1,'o'=> 0,'O'=> 0,'u'=> 6,'U'=> 6}
+    (cadena.delete(" ").chars).inject([]) do 
+        |acumulador, ((letra), i) | 
+        if (diccionario[letra]).nil?
+            acumulador << letra
+        else
+            acumulador << diccionario[letra]
+        end
+    end
 end
 
 cadena = "RubI es el mejor amigo de un desarollador"
-string_reverso(cadena)
-string_sin_espacio(cadena)
-string_a_arreglo_ascii(cadena)
-string_remplaza_vocal(cadena)
+p string_reverso(cadena)
+p string_sin_espacio(cadena)
+p string_a_arreglo_ascii(cadena)
+p string_remplaza_vocal_hash(cadena)
+p string_remplaza_vocal_dicc(cadena)
