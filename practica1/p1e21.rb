@@ -1,4 +1,6 @@
 
+# && porque debe ser multiplo de 3 y 5 (ambos)
+
 def sumar_tres_cinco(tope)
     (0..tope).to_a.select { |x| x % 3 == 0 && x % 5 == 0 }.inject(:+)
 end
