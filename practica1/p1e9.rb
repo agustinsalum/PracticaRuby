@@ -35,22 +35,8 @@ def string_remplaza_vocal_hash(cadena)
      arreglo
 end
 
-# Cambia las vocales por números. Con diccionario
-def string_remplaza_vocal_dicc(cadena)
-    diccionario = {'a'=> 4,'A'=> 4,'e'=> 3,'E'=> 4,'i'=> 1,'I'=> 1,'o'=> 0,'O'=> 0,'u'=> 6,'U'=> 6}
-    (cadena.delete(" ").chars).inject([]) do 
-        |acumulador, ((letra), i) | 
-        if (diccionario[letra]).nil?
-            acumulador << letra
-        else
-            acumulador << diccionario[letra]
-        end
-    end
-end
-
 cadena = "RubI es el mejor amigo de un desarollador"
 p string_reverso(cadena)
 p string_sin_espacio(cadena)
 p string_a_arreglo_ascii(cadena)
 p string_remplaza_vocal_hash(cadena)
-p string_remplaza_vocal_dicc(cadena)

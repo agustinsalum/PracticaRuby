@@ -3,6 +3,7 @@
 # sustituyendo cada letra por la letra que está trece posiciones por
 # delante en el alfabeto
 
+# Pendiente... basarse en el rot13_con_map
 def descodificar(letra,cantidad)
     case letra
     when 'a'..'m', 'A'..'M'

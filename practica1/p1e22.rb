@@ -1,5 +1,5 @@
 
-
+# Consultar
 def multiplos_de(arreglo,tope)
     # Seleccionamos los numeros del rango que son multiplos de todos los numeros del arreglo
     # Select recorre los numeros del rango

@@ -26,5 +26,5 @@ def rot13_con_map(cadena)
 end
 
 p rot13("¡aZ!")
-p rot13_con_map("A")
+p rot13_con_map("!AaZzNnt")
 
