@@ -1,8 +1,6 @@
 
-
-def ordenar_arreglo(*arr)
-    arr.sort
+def longitud(*arr)
+    arr.each { |parametro| p "#{parametro.to_s} --> #{(parametro.to_s).length}"}
 end
 
-entrada = [10,9,1,2,3,5,7,8]
-p ordenar_arreglo(*entrada)
+longitud(9, Time.now, 'Hola', {un: 'hash'}, :ruby)
