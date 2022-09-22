@@ -18,6 +18,7 @@ class Usuario
         un_documento = Documento.new(self,tipo,descripcion)
     end
 
+    # A
     def borrar(un_documento)
         un_documento.borrar if rol == 'Administrador'
     end
@@ -38,6 +39,7 @@ class Usuario
         self.rol == 'Administrador'
     end
 
+    # B
     def puede_ver?(un_documento)
         permiso = true
         case permiso
@@ -51,6 +53,7 @@ class Usuario
         permiso
     end
 
+    # C
     def puede_modificar?(un_documento)
         permiso = true
         case permiso
@@ -63,6 +66,7 @@ class Usuario
         permiso
     end
 
+    # D
     def puede_borrar?(un_documento) 
         permiso = true
         case permiso

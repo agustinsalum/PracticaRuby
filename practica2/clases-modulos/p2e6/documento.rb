@@ -15,19 +15,24 @@ class Documento
         self.creador == un_usuario
     end
     
+    # A
     def borrar
         self.borrado = true
     end
-    
+
+    # B
     def puede_ser_visto_por?(usuario)
         usuario.puede_ver? self
     end
     
+    # C
     def puede_ser_modificado_por?(usuario)
         usuario.puede_modificar? self
     end
     
+    # D
     def puede_ser_borrado_por?(usuario)
         usuario.puede_borrar? self
     end
+    
 end

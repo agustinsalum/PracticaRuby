@@ -31,3 +31,21 @@ class Sample
 
  Sample.include Countable
  p Sample.count_invocations_of :hello
+
+
+=begin
+ def foo() end
+
+    count = 0
+    name = :foo
+    
+    TracePoint.trace(:call) do |t|
+      count += 1 if t.method_id == name
+    end
+    
+    count # => 0
+    foo
+    count # => 1
+    foo
+    count # => 2
+=end
