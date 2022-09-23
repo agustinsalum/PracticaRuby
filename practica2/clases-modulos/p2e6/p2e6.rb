@@ -1,43 +1,48 @@
 
-require_relative 'documento.rb'
+require_relative 'rol.rb'
 require_relative 'usuario.rb'
 
+rol_lector         = RolLector.new()
+rol_redactor       = RolRedactor.new()
+rol_director       = RolDirector.new()
+rol_administrador  = RolAdministrador.new()
 
-un_usuario_lector        = Usuario.new('nuts','Lector')
-un_usuario_redactor      = Usuario.new('gimena','Redactor')
-un_usuario_director      = Usuario.new('matz','Director')
-un_usuario_administrador = Usuario.new('agustin92','Administrador')
+usuario_lector        = Usuario.new('yuki',rol_lector)
+usuario_redactor      = Usuario.new('matz',rol_redactor)
+usuario_director      = Usuario.new('gimena',rol_director)
+usuario_administrador = Usuario.new('agustin92',rol_administrador)
 
-# Creando documentos
+documento_publico = usuario_lector.crear_documento(true,"RBS es un lenguaje para describir la estructura de programas Ruby")
+documento_privado = usuario_redactor.crear_documento(false,"Ruby es el mejor amigo de un desarollador")
 
-un_documento_publico = un_usuario_lector.crear_documento(true,"RBS es un lenguaje para describir la estructura de programas Ruby")
-un_documento_privado = un_usuario_redactor.crear_documento(false,"Ruby es el mejor amigo de un desarollador")
 
-# Probando borrar
+#Probando borrar
 
-p un_documento.borrado
-p un_usuario_lector.borrar(un_documento)
-p un_documento.borrado # No se borra porque lo borro un lector
-p un_usuario_administrador.borrar(un_documento)
-p un_documento.borrado # Se borra porque lo borro un administrador
+usuario_lector.borrar(documento_publico)
+p documento_publico.borrado # No puede borrarlo
+usuario_administrador.borrar(documento_publico)
+p documento_publico.borrado # Se borra porque lo borro un administrador
+
 
 # Probando puede ser visto por
 
-p un_documento_publico.puede_ser_visto_por? un_usuario_lector
-p un_documento_privado.puede_ser_visto_por? un_usuario_redactor
-p un_documento_publico.puede_ser_visto_por? un_usuario_director
-p un_documento_privado.puede_ser_visto_por? un_usuario_administrador
+p documento_publico.puede_ser_visto_por? usuario_lector
+p documento_privado.puede_ser_visto_por? usuario_lector
+p documento_privado.puede_ser_visto_por? usuario_administrador
+
 
 # Probando puede ser modificado por
 
-p un_documento_publico.puede_ser_modificado_por? un_usuario_lector
-p un_documento_privado.puede_ser_modificado_por? un_usuario_redactor
-p un_documento_publico.puede_ser_modificado_por? un_usuario_director
-p un_documento_privado.puede_ser_modificado_por? un_usuario_administrador
+p documento_publico.puede_ser_modificado_por? usuario_lector
+p documento_privado.puede_ser_modificado_por? usuario_redactor
+p documento_publico.puede_ser_modificado_por? usuario_redactor
+p documento_publico.puede_ser_modificado_por? usuario_director
+p documento_privado.puede_ser_modificado_por? usuario_administrador
+
 
 # Probando puede ser borrado por
 
-p un_documento_publico.puede_ser_borrado_por? un_usuario_lector
-p un_documento_privado.puede_ser_borrado_por? un_usuario_redactor
-p un_documento_publico.puede_ser_borrado_por? un_usuario_director
-p un_documento_privado.puede_ser_borrado_por? un_usuario_administrador
+p documento_publico.puede_ser_borrado_por? usuario_director
+p documento_privado.puede_ser_borrado_por? usuario_administrador
+
+

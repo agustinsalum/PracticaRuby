@@ -5,10 +5,10 @@ class Documento
     attr_accessor :creador, :contenido, :publico, :borrado
     
     def initialize(usuario, publico = true, contenido = '')
-        self.creador = usuario
-        self.publico = publico
-        self.contenido = contenido
-        self.borrado = false
+        @creador = usuario
+        @publico = publico
+        @contenido = contenido
+        @borrado = false
     end
 
     def perteneceA?(un_usuario)
