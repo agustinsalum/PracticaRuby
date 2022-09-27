@@ -4,8 +4,9 @@ def longitud_uno(lista)
 end
 
 # Otra forma de resolverlo
-# Cada vez que Ruby ve un & como parametro, quiere que sea un Proc.
-# Si este no es el caso, Ruby llama #to_proca para convertirlo
+# Explicacion: Teoria "Conceptos avanzados" --> "Bloques más dinámicos"
+# Similar a Splat(*) en la invocacion que transforma los arreglos en argumentos formales para un metodo
+# En este caso & transforma el argumento a proc(bloque).. ya que los iteradores aceptan bloques (como cualquier funcion) pero no argumentos 
 def longitud_dos(lista)
     lista.map(&:length)
 end
