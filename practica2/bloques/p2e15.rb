@@ -1,6 +1,6 @@
 
 def da_nil?
-    yield
+    (yield == nil)
 end
 
 p da_nil? {}

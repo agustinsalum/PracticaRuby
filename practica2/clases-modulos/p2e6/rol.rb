@@ -6,18 +6,6 @@ class Rol
         @nombre = nombre
     end
 
-    def sos_administrador?
-        nombre == 'Administrador'
-    end
-
-    def sos_director?
-        nombre == 'Director'
-    end
-
-    def sos_redactor?
-        nombre == 'Redactor'
-    end
-
 end
 
 
