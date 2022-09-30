@@ -6,6 +6,7 @@ class Array
             (self.length).times { num = self.sample ; yield(num) ; self.delete(num) }
         else # Retornar enumerador que arroja los elementos de forma aleatoria
             un_enumerador = Enumerator.new do |caller|
+                p caller
                 loop do
                     num = self.sample
                     caller.yield (num)

@@ -6,7 +6,7 @@
 
 def probando_excepciones(*args)
     begin
-        (args.each.inject(0) { |sum,x| yield(sum,x) })
+        (args.sum { | elem | yield(elem) })
     rescue RuntimeError
         p "Hay algo mal que no anda bien"
         return :rt
@@ -21,12 +21,13 @@ def probando_excepciones(*args)
 end
 
 puts ("Este funciona bien: ")
-p probando_excepciones(1,2,3) { |sum,x| sum + (x.to_f)/2 } # to_f para tener mayor precision
+p probando_excepciones(1,2,3) { |x| (x.to_f)/2 } # to_f para tener mayor precision
 
 puts ("Este provoca la excepcion RuntimeError: ")
+p probando_excepciones(1,2,3) { |x| (str = "").freeze ; str.replace(x.to_s) }
 
 puts ("Este provoca la excepcion NoMethodError")
-p probando_excepciones('1','2','3') { |sum,x| sum + (x/2) }
+p probando_excepciones('1','2','3') { |x| x/2 }
 
 puts ("Este provoca una excepcion cualquiera: ")
-p probando_excepciones(1,2,3) { |sum,x| sum + (x/0) }
+p probando_excepciones(1,2,3) { |x| x/0 }
