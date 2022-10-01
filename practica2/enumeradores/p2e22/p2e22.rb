@@ -11,7 +11,7 @@ class Palabra
     end
 
 
-    # que debe retornar las vocales que contiene la palabra que representa, sin repeticione$.
+    # que debe retornar las vocales que contiene la palabra que representa, sin repeticiones.
     def vocales
         (@palabra.scan(/[aeiou]/i)).uniq
     end
