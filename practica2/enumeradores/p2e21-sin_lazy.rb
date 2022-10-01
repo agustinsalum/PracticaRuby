@@ -14,7 +14,6 @@ numeros_primos = Enumerator.new do |caller|
     end
 end
 
-
 p numeros_primos.next
 p numeros_primos.next
 p numeros_primos.next
