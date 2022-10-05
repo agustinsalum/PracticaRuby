@@ -12,24 +12,25 @@ end
 
 def primos_lazy_alternativo(tope)
     Enumerator.new do |e|
+        # Primero mostramos el 2
+        # step(2) saca del rango al 2
+        # Hasta map lo mismo que la funcion simple
         e.yield 2
-        (3..Float::INFINITY).step(2).lazy.reject{ |i| (3..Math.sqrt(i)).step(2).any?{ |j| i % j == 0 } }.map(&:to_i).each(&e.method(:yield).to_proc)
+        (3..Float::INFINITY).step(2).lazy.reject{ |numero| (3..Math.sqrt(numero)).step(2).any?{ |j| numero % j == 0 } }.map(&:to_i).each(&e.method(:yield).to_proc)
     end.lazy
 end
 
-def primos_lazy_casero(tope)
-    Enumerator.new do |a|
-        e.yield 2
-        (3..Float::INFINITY).step(2).lazy.reject{ |i| (3..Math.sqrt(i)).step(2).any?{ |j| i % j == 0 } }.map(&:to_i).each(&e.method(:yield).to_proc)
-    end.lazy
-end
 
-enumerador_lazy = primos_lazy_simple(4)
-p enumerador_lazy.next
-p enumerador_lazy.next
-p enumerador_lazy.next
-p enumerador_lazy.next
-p enumerador_lazy.next
-p enumerador_lazy.next
+enumerador_lazy_s = primos_lazy_simple(4)
+#p enumerador_lazy.next
+#p enumerador_lazy.next
+#p enumerador_lazy.next
+#p enumerador_lazy.next
+#p enumerador_lazy.next
+#p enumerador_lazy.next
 
-enumerador_lazy_smarte = primos_lazy_alternativo(5)
+enumerador_lazy_a = primos_lazy_alternativo(5)
+
+p enumerador_lazy_a.next
+p enumerador_lazy_a.next
+p enumerador_lazy_a.next
