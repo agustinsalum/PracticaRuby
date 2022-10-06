@@ -12,13 +12,14 @@ class Palabra
 
 
     # que debe retornar las vocales que contiene la palabra que representa, sin repeticiones.
+    # [ "a", "a", "b", "b", "c" ].uniq => ["a", "b", "c"]
     def vocales
         (@palabra.scan(/[aeiou]/i)).uniq
     end
 
     # que debe retornar las consonantes que contiene la palabra, sin repeticiones.
     def consonantes
-        (@palabra.scan(/[abcdfghjklmñpqrstvwyz]/i)).uniq
+        (@palabra.scan(/[bcdfghjklmñpqrstvwyz]/i)).uniq
     end
 
     # que debe retornar la cantidad de caracteres que tiene la palabra.
@@ -29,12 +30,18 @@ class Palabra
     
     # que debe retornar un valor booleano indicando si la palabra es panvocálica (o pentavocálica), es decir si contiene las 5 vocales.
     def es_panvocalica?
-        arreglo_consonantes = (@palabra.scan(/[aeiou]/i))
-        (arreglo_consonantes.length >= 5) && (arreglo_consonantes.all?{ |consonante| arreglo_consonantes.count(consonante) == 1 })
+        arreglo_vocales = (@palabra.scan(/[aeiou]/i))
+        # minuscula == mayuscula
+        p arreglo_vocales
+        arreglo_vocales.each { |vocal| vocal.upcase! }
+        p arreglo_vocales
+        # Si tiene las 5 vocales (o mas por mauyusculas) y no se repiten (definicion de panvocalica)
+        (arreglo_vocales.length >= 5) && (arreglo_vocales.all?{ |vocal| arreglo_vocales.count(vocal) == 1 })
     end
 
     # que debe retornar un valor boolean indicando si la palabra es un palíndromo, es decir si se lee igual en un sentido que en otro, teniendo al menos 3 letras.
     def es_palindroma?
+        # capicua
         (@palabra.length >= 3) && (@palabra == @palabra.reverse)
     end
 
@@ -64,30 +71,11 @@ class Palabra
 end
 
 
-agustin        = Palabra.new("Agustin")
-elenguajee     = Palabra.new("ElenguajeE")
-ruby           = Palabra.new("Ruby")
-descontinuar   = Palabra.new("descontinuar")
-descontinuara  = Palabra.new("descontinuara")
-reconocer      = Palabra.new("reconocer")
-ab             = Palabra.new("ab")
-
-#p elenguajee.vocales
-
-#p agustin.consonantes
-
-#p ruby.longitud
-
-#p ruby.es_panvocalica?
-#p descontinuar.es_panvocalica?
-#p descontinuara.es_panvocalica?
-
-#p ab.es_palindroma?
-#p ruby.es_palindroma?
-#p reconocer.es_palindroma?
-
-#p reconocer.gritando
-
-p ruby.en_jaquer
-p agustin.en_jaquer
-p reconocer.en_jaquer
+agustin          = Palabra.new("Agustin")
+elenguajee       = Palabra.new("ElenguajeE")
+ruby             = Palabra.new("Ruby")
+descontinuar     = Palabra.new("descontinuar")
+descontinuara    = Palabra.new("descontinuara")
+descontinuarae   = Palabra.new("dEscontinuarae")
+reconocer        = Palabra.new("reconocer")
+ab               = Palabra.new("ab")
