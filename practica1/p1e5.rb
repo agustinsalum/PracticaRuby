@@ -1,7 +1,7 @@
 
 def reemplazar (string)
-    string = string.gsub('{','do\n')  
-    string = string.gsub('}','\nend')
+    string.gsub!('{','do\n')  # ! modifica el receptor. No es necesario hacer string = string.gsub!
+    string.gsub!('}','\nend')
     string
  end
 
