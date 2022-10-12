@@ -5,7 +5,7 @@ def primos_lazy_mio(tope)
         ((2..Float::INFINITY).lazy.reject { |numero| (2...numero).any? { |num| numero % num == 0 } }).take(tope)
 end
 
-begin
+begin # La excepcion se captura afuera y no adentro de la funcion porque se lanza en el momento que se hace next
     enumerador_lazy_m = primos_lazy_mio(4)
     p enumerador_lazy_m.next
     p enumerador_lazy_m.next
