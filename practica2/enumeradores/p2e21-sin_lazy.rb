@@ -1,6 +1,7 @@
 
 require 'prime'
 
+# objeto enumerator explícito sin coleccion
 numeros_primos = Enumerator.new do |caller|
     actual, limite = 1, 0
     loop do

@@ -21,7 +21,7 @@ module Countable
     
     def contabilizar
         # ||=  si el hash esta vacio entonces retorna false... true en caso contrario
-        @d||=Hash.new(0)
+        @d||=Hash.new(0) # Las nuevas keys van a iniciarse con un value en cero, usado como contador
     end
 
     # método de instancia que devuelve un valor booleano indicando si el método llamado sym fue invocado al menos una vez en la instancia receptora.
