@@ -37,8 +37,8 @@ begin
         gets()
         retry
     end
-rescue Excepcion # El padre de todas las excepciones
-    puts  "Ocurrio un error inesperado.. Se retornara la ejecucion al principio"
+rescue Exception => error # El padre de todas las excepciones
+    puts  "Ocurrio el siguiente error inesperado: #{error}"
     gets()
     retry
 end
