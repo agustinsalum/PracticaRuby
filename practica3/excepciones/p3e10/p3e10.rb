@@ -20,11 +20,11 @@ def procesar_archivo(file)
             yield(dato)
             p dato
             contador+=1
-            coleccion_palabras.delete($dato)
+            coleccion_palabras.delete(dato)
         end
     rescue => mensaje
         puts "Error encontrado: #{mensaje.message} #{$!.class}"
-        coleccion_palabras.delete($dato) # No tiene alcance
+        coleccion_palabras.delete($dato) # Las variables del iterador no tiene alcance
         retry
     ensure
         puts "Total: #{contador}"  # Cuando termina de iterar mostramos el total

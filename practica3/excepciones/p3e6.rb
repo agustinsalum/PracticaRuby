@@ -48,8 +48,12 @@ def opcion_4
     puts "c: #{c.inspect}"
 end
 
-#p opcion_1()
+puts "Mostramos opcion 1: "
+p opcion_1()
+puts "Mostramos opcion 2: "
 p opcion_2()
+puts "Mostramos opcion 3: "
 p opcion_3()
-#p opcion_4()
+puts "Mostramos opcion 4: "
+p opcion_4()
 

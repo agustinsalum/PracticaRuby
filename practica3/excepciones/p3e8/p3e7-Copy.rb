@@ -40,7 +40,7 @@ begin
         gets()
         retry
     end
-rescue Exception => error # El padre de todas las excepciones
+rescue  => error # El padre de todas las excepciones
     puts  "Ocurrio el siguiente error inesperado: #{error}"
     gets()
     retry
