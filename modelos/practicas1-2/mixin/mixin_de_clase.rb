@@ -27,15 +27,19 @@
 # Incorporar dependencias acá
 # ...
 
-require_relative "cache.rb"
+
+# requiere es para incorporar dependencias fuera de la carpeta
+# require_relative es para incorporar dependencias en el mismo directorio
+require '../cache/cache_de_clase'
 
 # Implementar mixin Cacheable acá
 # ...
 
 module Cacheable
   module CacheableMethodClass
+    
     def limpiar_cache
-      (Cache.claves.keys.select { |clave| clave.split("_").include?((self.name)) } ).each { |clave_local| Cache.claves.delete(clave_local)}
+      Cache.entradas.select { |clave| clave.start_with?(name) }.each { |clave| Cache.remover(clave) }
     end
   end
   
@@ -45,11 +49,15 @@ module Cacheable
   end
 
   def cachear
-    Cache.cargar(self.clave_cache,"valor_#{self.clave_cache}")
+    Cache.cargar(clave_cache, self )
+  end
+  
+  def limpiar_cache
+    Cache.remover(clave_cache)
   end
 
   def cacheada?
-    (Cache.claves).key?(self.clave_cache) && (Cache.expirada?(self.clave_cache))
+    !Cache.expirada?(clave_cache)
   end
 end
 
@@ -87,13 +95,17 @@ class Avion
   # Implementar código principal acá
 
 
-  puts ("Ejercicio mixin")
+puts ("Ejercicio mixin")
 
 un_avion = Avion.new(443252,2022)
 una_persona = Persona.new(36764860,'Agustin','Salum')
-una_persona.cachear()
-p Cache.claves                                          # {"Persona_36764860"=>"valor_Persona_36764860"}
-p una_persona.cacheada?                                 # False --> porque no fue expirada
+
+p una_persona.cachear()
+p un_avion.cachear()
+
+p Cache.cache
+
+p una_persona.cacheada?                   # true                              
 Persona.limpiar_cache
-p Cache.claves                                          # {}
+p una_persona.cacheada?                   # false    
 

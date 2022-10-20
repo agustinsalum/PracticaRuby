@@ -28,44 +28,52 @@
 
 
 
+# La forma no recomendable es con metodos de instancia
 class Cache
 
-    @claves = Hash.new()
-    @tiempo = Hash.new()
+    attr_reader :cache
 
-    class << self
-        attr_accessor :claves, :tiempo
+
+    # Singleton: Utilizar una unica instancia
+    def self.instancia
+        @instancia ||= new  # Si retorna true devuelve la instancia.. con false crea una nueva
     end
     
-    def self.cargar(clave,valor)
-        @claves[clave] = valor
-        @tiempo[clave] = Time.now.to_i # to_i lo transforma en la hora UNIX 
+    def initialize
+        @cache = {}
     end
-
-    def self.expirada?(clave)
-        ((@tiempo[clave] - Time.now.to_i).round) >=3 
+    
+    def cargar(clave, valor)
+        @cache[clave] = { valor: valor, timestamp: Time.now.to_i }
     end
-
-    def self.entradas
-        @tiempo.reject { |(clave,valor)| expirada?(clave) }
-
+    
+    def expirada?(clave)
+        expirada = Time.now.to_i - timestamp_de(clave) > 3
+        if expirada
+            remover(clave)
+        end
+        expirada
     end
-
-    def self.valor_de(clave)
-        expirada?(clave) ? nil : claves[clave]        
+    
+    def timestamp_de(clave)
+        @cache.dig(clave, :timestamp) || 0
     end
-
-    def self.remover(clave)
-        @claves.delete(clave)
+    
+    def entradas
+        @cache.keys.reject do |clave|
+            expirada?(clave)
+        end
     end
-
+    
+    def valor_de(clave)
+        unless expirada?(clave)
+            @cache.dig(clave, :valor)
+        end
+    end
+    
+    def remover(clave)
+        @cache.delete(clave)
+    end
 end
 
-puts ("Ejercicio cache")
-
-Cache.cargar('cache34756454',34756454)
-p Cache.expirada?('cache34756454')   # False --> No esta expirada porque recien fue creada
-p Cache.entradas                     # {"cache34756454"=>1665707742} --> No expiradas
-p Cache.valor_de('cache34756454')    # 34756454 --> Valor de la clave
-Cache.remover('cache34756454')       # Se remueve la clave con exito
-p Cache.claves                       # {}
+# La forma alternativa de probarlos evitando el sleep es usar el irb e importarlo con require_relative 'cache_de_instancia'

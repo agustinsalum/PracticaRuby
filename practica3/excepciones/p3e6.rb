@@ -21,6 +21,7 @@ rescue
     0
 end
 
+# C con exito nil y si falla 0
 def opcion_2
     c = begin
         a = [1, nil, 3, nil, 5, nil, 7, nil, 9, nil]
@@ -41,6 +42,7 @@ def opcion_3
     puts " c: #{c.inspect}"
 end
 
+# falta begin
 def opcion_4
     a = [1, nil, 3, nil, 5, nil, 7, nil, 9, nil]
     b = 3

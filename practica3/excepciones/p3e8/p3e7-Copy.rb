@@ -4,17 +4,20 @@
 
 require_relative 'p3e8'
 
-begin
+
     puts "Aca empieza la excepcion para errores globales"
     begin
         puts "Aca empieza la excepcion para errores de argumentos (cantidad)"
         cantidad = 0
         while cantidad < 15
             puts 'Cuál es la cantidad de números que ingresará? Debe ser al menos 15'
-            cantidad = Integer(gets)
+            cantidad = gets()
+            if (validar())
+                raise NoEsUnNumero.new("Por favor.. debe ingresar numeros. Se le solicitara nuevamente una cantidad")
         end
-    rescue   # Por si ingresa letras en vez de numeros
-        raise NoEsUnNumero.new("Por favor.. debe ingresar numeros. Se le solicitara nuevamente una cantidad")
+    rescue NoEsUnNumero  # Por si ingresa letras en vez de numeros
+        NoEsUnNumero.new("Por favor.. debe ingresar numeros. Se le solicitara nuevamente una cantidad")
+        puts "holaaaaaaaaaa"
         gets()
         retry
     end
@@ -40,8 +43,3 @@ begin
         gets()
         retry
     end
-rescue  => error # El padre de todas las excepciones
-    puts  "Ocurrio el siguiente error inesperado: #{error}"
-    gets()
-    retry
-end
