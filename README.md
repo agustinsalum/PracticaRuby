@@ -118,7 +118,7 @@ Warning: no Ruby detected on the system
 
 Para poder instalar versiones de Ruby, se debe continuar con el siguiente apartado.
 
-## Instalación de ruby‐build
+### Instalación de ruby‐build
 
 La herramienta rbenv por si sola nos permite cambiar de versiones de Ruby, pero no instala nuevas
 versiones. Para poder hacer eso, se debe contar con el plugin ruby-build para rbenv.
@@ -160,3 +160,9 @@ rbenv: ruby: command not found
 The `ruby' command exists in these Ruby versions:
 2.7.6
 ```
+````
+
+```
+¡Mirar! Puedes ver mis backticks.
+```
+````
