@@ -225,8 +225,7 @@ que aparecen al ejecutar rbenv install -l.
 
 Una vez que se tiene el ambiente de desarrollo en Ruby instalado y configurado, se lo puede probar
 ejecutando un script escrito en Ruby. Para ello, se puede tomar el que se incluye en el repositorio.
-Para ejecutar cualquier archivo utilizando el intérprete de Ruby, se usa un comando como el siguien‐
-te:
+Para ejecutar cualquier archivo utilizando el intérprete de Ruby, se usa un comando como el siguiente:
 
 ```
 ruby ruta/al/archivo.rb
