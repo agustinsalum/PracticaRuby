@@ -24,14 +24,13 @@ Los más populares:
 
 ### Instalación de rbenv
 
-Para instalar este gestor, se debe contar con el comando git , las librerías necesarias para compilar
-programas escritos en C y algunas dependencias más. En la versión actual de Ubuntu (22.04 al mo‐
-mento de escribir esta guía), por ejemplo, los paquetes necesarios pueden instalarse con los siguien‐
-tes comandos:
+Para instalar este gestor, se debe contar con el comando git, las librerías necesarias para compilar
+programas escritos en C y algunas dependencias más. En la versión actual de Ubuntu 18, por ejemplo, los paquetes necesarios pueden instalarse con los siguientes comandos:
 
 ```
 apt update -qq
 ```
+
 ```
 apt install -y git \ build-essential \ autoconf \ bison \ curl \ lib{ssl,yaml,sqlite3}-dev \ libreadline{8,-dev} \ zlib1g{,-dev}
 ```
@@ -46,8 +45,8 @@ git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
 
 Después de esto, se debe configurar la shell para que cargue rbenv cada vez que se inicie, dejando
 disponibles los shims que rbenv genera para poder cambiar automáticamente las versiones de las
-herramientas. Esto se hace agregando al archivo de perfil ( ~/.bashrc en este caso) de la shell 2 lí‐
-neas:
+herramientas. Esto se hace agregando al archivo de perfil ( ~/.bashrc en este caso) de la shell 2 líneas:
+
 * una que agrega al principio de la variable de ambiente $PATH la ruta al directorio bin de rbenv
 (donde están los shims ejecutables), y
 * otra que carga el script de inicialización de rbenv.
@@ -136,8 +135,7 @@ comando:
 rbenv install -l
 ```
 
-Y si se quiere instalar cualquiera de las versiones que se listan, sólo basta especificar la versión y ruby
--build se encargará de instalarla. Por ejemplo, para instalar la versión 2.7.6 se debe ejecutar este
+Y si se quiere instalar cualquiera de las versiones que se listan, sólo basta especificar la versión y ruby-build se encargará de instalarla. Por ejemplo, para instalar la versión 3.1.2 se debe ejecutar este
 comando (que puede tardar):
 
 ```
@@ -150,7 +148,7 @@ Si todo salió bien, se puede corroborar que se disponga de la versión deseada 
 rbenv versions
 ```
 
-La salida del comando debería incluir 2.7.6 . De ser así, la instalación fue exitosa.
+La salida del comando debería incluir 3.1.2 . De ser así, la instalación fue exitosa.
 Aún cuando se tenga instalada una versión de Ruby, si se intenta ejecutar su intérprete es probable
 que se obtenga un error como el siguiente:
 
@@ -166,8 +164,7 @@ sección.
 
 >Nota: esta forma de instalar rbenv hace deseable la actualización periódica de rbenv y ruby‐build
 para poder tener acceso a las últimas versiones del lenguaje.
-Para esto, basta con ejecutar cada tanto los siguientes comandos con el usuario que se haya
-instalado rbenv:
+Para esto, basta con ejecutar cada tanto los siguientes comandos con el usuario que se haya instalado rbenv:
 
 ```
 cd ~/.rbenv
@@ -227,8 +224,7 @@ que aparecen al ejecutar rbenv install -l.
 ### Paso final: prueba
 
 Una vez que se tiene el ambiente de desarrollo en Ruby instalado y configurado, se lo puede probar
-ejecutando un script escrito en Ruby. Para ello, se puede tomar el que se incluye en el repositorio de
-explicaciones prácticas o escribir uno.
+ejecutando un script escrito en Ruby. Para ello, se puede tomar el que se incluye en el repositorio.
 Para ejecutar cualquier archivo utilizando el intérprete de Ruby, se usa un comando como el siguien‐
 te:
 
