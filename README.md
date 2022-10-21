@@ -154,15 +154,9 @@ La salida del comando debería incluir 2.7.6 . De ser así, la instalación fue 
 Aún cuando se tenga instalada una versión de Ruby, si se intenta ejecutar su intérprete es probable
 que se obtenga un error como el siguiente:
 
-```
+```ruby
 ruby -v
 rbenv: ruby: command not found
 The `ruby' command exists in these Ruby versions:
-2.7.6
+3.1.2
 ```
-````
-
-```
-¡Mirar! Puedes ver mis backticks.
-```
-````
