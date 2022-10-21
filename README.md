@@ -2,8 +2,7 @@
 
 ## Preparar nuestro ambiente de desarrollo
 
-En esta explicación se trata de explicar en una guía paso a paso cómo preparar un ambiente de desa‐
-rrollo local para Ruby.
+En esta explicación se trata de explicar en una guía paso a paso cómo preparar un ambiente de desarrollo local para Ruby.
 
 ## Gestores de ambiente
 
@@ -15,12 +14,12 @@ indicaciones particulares del usuario.
 
 Los más populares:
 * RVM
-* * Ruby enVironment Manager.
-* * Herramienta pionera en su función.
+    * Ruby enVironment Manager.
+    * Herramienta pionera en su función.
 * rbenv
-* * Ruby environment.
-* * Alternativa más liviana y con menores pre‐requisitos que RVM.
-* * Extensible mediante plugins.
+    * Ruby environment.
+    * Alternativa más liviana y con menores pre‐requisitos que RVM.
+    * Extensible mediante plugins.
 
 
 ## Instalación de rbenv
