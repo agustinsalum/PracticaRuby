@@ -22,7 +22,7 @@ Los más populares:
     * Extensible mediante plugins.
 
 
-## Instalación de rbenv
+### Instalación de rbenv
 
 Para instalar este gestor, se debe contar con el comando git , las librerías necesarias para compilar
 programas escritos en C y algunas dependencias más. En la versión actual de Ubuntu (22.04 al mo‐
@@ -31,13 +31,8 @@ tes comandos:
 
 ```
 # apt update -qq
-# apt install -y git \
-build-essential \
-autoconf \
-bison \
-curl \
-lib{ssl,yaml,sqlite3}-dev \
-libreadline{8,-dev} \
-zlib1g{,-dev}
+```
+```
+# apt install -y git \ build-essential \ autoconf \ bison \ curl \ lib{ssl,yaml,sqlite3}-dev \ libreadline{8,-dev} \ zlib1g{,-dev}
 ```
 
