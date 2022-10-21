@@ -4,7 +4,7 @@
 
 En esta explicación se trata de explicar en una guía paso a paso cómo preparar un ambiente de desarrollo local para Ruby.
 
-## Gestores de ambiente
+### Gestores de ambiente
 
 Los gestores de ambiente, también llamados manejadores de versiones, facilitan el uso de múltiples
 versiones de un lenguaje (Ruby, en nuestro caso) en un mismo sistema.
