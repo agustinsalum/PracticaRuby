@@ -231,7 +231,7 @@ Para ejecutar cualquier archivo utilizando el intérprete de Ruby, se usa un com
 ruby ruta/al/archivo.rb
 ```
 
-Notar que la extensión .rb es simplemente una convención, los archivos Ruby son archivos de texto
+>Notar que la extensión .rb es simplemente una convención, los archivos Ruby son archivos de texto
 plano, más allá de su extensión (o la ausencia de la misma); es decir que el script podría llamarse
 hello , hello.ruby o de cualquier otra manera, y sin importar eso si el archivo es de texto plano y el
 contenido es código Ruby válido, el intérprete lo ejecutará sin problemas.
