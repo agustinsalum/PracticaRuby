@@ -156,8 +156,8 @@ que se obtenga un error como el siguiente:
 
 
 >ruby -v
->rbenv: ruby: command not found
->The `ruby' command exists in these Ruby versions:
->3.1.2
+rbenv: ruby: command not found
+The `ruby' command exists in these Ruby versions:
+3.1.2
 
 
