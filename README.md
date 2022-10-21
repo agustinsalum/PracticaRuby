@@ -59,3 +59,8 @@ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 ```
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 ```
+
+> Nota: el archivo de perfil del usuario puede variar según el Sistema Operativo que se utilice y
+según el intérprete de comandos (Bash, Zsh, Ksh, entre otros). El archivo al que se hace referencia
+aquí es a uno que se cargue cuando la shell se inicie. En otras distribuciones de GNU/Linux, por
+ejemplo, el archivo es `~/.bash_profile .`
