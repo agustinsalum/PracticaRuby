@@ -154,10 +154,91 @@ La salida del comando debería incluir 2.7.6 . De ser así, la instalación fue 
 Aún cuando se tenga instalada una versión de Ruby, si se intenta ejecutar su intérprete es probable
 que se obtenga un error como el siguiente:
 
-
->ruby -v
+```
+ruby -v
 rbenv: ruby: command not found
 The `ruby' command exists in these Ruby versions:
 3.1.2
+```
+
+Esto se debe a que aún no se ha especificado qué versión de Ruby utilizar. Esto se hará en la próxima
+sección.
+
+>Nota: esta forma de instalar rbenv hace deseable la actualización periódica de rbenv y ruby‐build
+para poder tener acceso a las últimas versiones del lenguaje.
+Para esto, basta con ejecutar cada tanto los siguientes comandos con el usuario que se haya
+instalado rbenv:
+
+```
+cd ~/.rbenv
+git pull origin master
+cd plugins/ruby-build
+git pull origin master
+```
+
+### Uso
+
+El uso de este gestor es, en general, totalmente transparente al usuario y automático. La herramienta
+se encarga de cambiar la versión de Ruby a utilizar acorde a reglas bien definidas, que se conside‐
+ran en el siguiente orden (toma la la primera versión que se especifique respetando este orden de
+prioridad):
+1. El valor de la variable de ambiente $RBENV_VERSION . Esta se llama versión de shell .
+2. El contenido del primer archivo llamado .ruby-version encontrado desde el directorio don‐
+de reside el script Ruby que se esté ejecutando, o subiendo de a un nivel en los directorios padre
+hasta alcanzar la raiz del filesystem (el directorio / ).
+3. El contenido del primer archivo llamado .ruby-version encontrado desde el directorio ac‐
+tual donde esté posicionado el usuario, o subiendo de a un nivel en los directorios padre hasta
+alcanzar la raiz del filesystem. Esta se llama versión local .
+4. La versión global especificada en el archivo ~/.rbenv/global .
+Rbenv provee algunos comandos que permiten generar o modificar la versión de Ruby deseada en
+los distintos contextos:
+* La versión shell se puede especificar con el comando rbenv shell 2.7.6 .
+* La versión local se puede especificar con el comando rbenv local 2.7.6 .
+* La versión global se puede especificar con el comando rbenv global 2.7.6 .
+Con esto en mente, es conveniente definir la versión global de Ruby que se desea utilizar:
+
+```
+rbenv global 3.1.2
+```
+
+Luego de esto, se puede corroborar que ahora sí se puede utilizar el intérprete de Ruby en la versión
+deseada:
+
+```
+ruby -v
+```
+
+Ese comando debería tener una salida que incluya:
+
+```
+ruby 3.1.2
+```
+
+Con esto se concluye con la instalación del ambiente de Ruby. En cualquier momento, se pueden
+instalar otras versiones del intérprete de Ruby ejecutando simplemente:
+
+```
+rbenv install VERSION
+```
+
+Donde VERSION es la versión que se desea instalar, y que debe estar disponible entre las versiones
+que aparecen al ejecutar rbenv install -l.
+
+### Paso final: prueba
+
+Una vez que se tiene el ambiente de desarrollo en Ruby instalado y configurado, se lo puede probar
+ejecutando un script escrito en Ruby. Para ello, se puede tomar el que se incluye en el repositorio de
+explicaciones prácticas o escribir uno.
+Para ejecutar cualquier archivo utilizando el intérprete de Ruby, se usa un comando como el siguien‐
+te:
+
+```
+ruby ruta/al/archivo.rb
+```
+
+Notar que la extensión .rb es simplemente una convención, los archivos Ruby son archivos de texto
+plano, más allá de su extensión (o la ausencia de la misma); es decir que el script podría llamarse
+hello , hello.ruby o de cualquier otra manera, y sin importar eso si el archivo es de texto plano y el
+contenido es código Ruby válido, el intérprete lo ejecutará sin problemas.
 
 
