@@ -4,20 +4,22 @@
 
 require_relative 'p3e8'
 
-
+begin
     puts "Aca empieza la excepcion para errores globales"
     begin
         puts "Aca empieza la excepcion para errores de argumentos (cantidad)"
         cantidad = 0
         while cantidad < 15
             puts 'Cuál es la cantidad de números que ingresará? Debe ser al menos 15'
-            cantidad = gets()
-            if (validar())
+            cantidad = (gets.chop())
+            unless (cantidad.scan(/[a-z]/i).empty?) # Si es un numero es empty (true).. No entra
                 raise NoEsUnNumero.new("Por favor.. debe ingresar numeros. Se le solicitara nuevamente una cantidad")
+            else
+                cantidad = cantidad.to_i() # gets retorna en String
+            end
         end
-    rescue NoEsUnNumero  # Por si ingresa letras en vez de numeros
-        NoEsUnNumero.new("Por favor.. debe ingresar numeros. Se le solicitara nuevamente una cantidad")
-        puts "holaaaaaaaaaa"
+    rescue NoEsUnNumero => n  # Por si ingresa letras en vez de numeros
+        p n.message
         gets()
         retry
     end
@@ -26,16 +28,24 @@ require_relative 'p3e8'
         begin
             puts "Aca empieza la excepcion para errores de argumentos (numeros)"
             # Luego se almacenan los números
-            numeros = 1.upto(cantidad).map do
+            numeros = []
+            1.upto(cantidad).map do
                 puts 'Ingrese un número'
-                numero = Integer(gets)
+                numero = (gets.chop())
+                unless (numero.scan(/[a-z]/i).empty?) # Si es un numero es empty (true).. No entra
+                    raise NoEsUnNumero.new("Por favor.. debe ingresar numeros. Se le solicitara nuevamente el ingreso de numeros")
+                else
+
+                    numeros << numero.to_i
+                end
             end
-        rescue   # Por si ingresa letras en vez de numeros
-            raise NoEsUnNumero.new("Por favor.. debe ingresar numeros. Se le solicitara nuevamente numeros")
+        rescue NoEsUnNumero => n  # Por si ingresa letras en vez de numeros
+            p n.message
             gets()
             retry
         end
         # Y finalmente se imprime cada número dividido por su número entero inmediato anterior
+        p numeros
         resultado = numeros.map { |x| x / (x - 1) }
         puts 'El resultado es: %s' % resultado.join(', ')
     rescue ZeroDivisionError # Por si ingreso un 1
@@ -43,3 +53,9 @@ require_relative 'p3e8'
         gets()
         retry
     end
+rescue => error
+    puts  "Ocurrio el siguiente error inesperado: #{error}"
+    gets()
+    retry
+end
+

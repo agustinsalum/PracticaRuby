@@ -8,9 +8,9 @@ end
 def procesar_archivo(file)
     archivo = File.open(file)
     coleccion_palabras = []
-    while linea = archivo.gets  # obtenemos toda la linea con el salto de linea /n
-        dato = linea.chomp   # eliminamos el salto de linea /n
-        dato = sosUnNumero?(dato)       # El archivo nos retorna todo como string.. lo convertimos a su tipo original
+    while linea = archivo.gets            # obtenemos toda la linea con el salto de linea /n
+        dato = linea.chomp                # eliminamos el salto de linea /n
+        dato = sosUnNumero?(dato)         # El archivo nos retorna todo como string.. lo convertimos a su tipo original
         coleccion_palabras << dato
     end
     contador = 0
