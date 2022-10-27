@@ -21,7 +21,7 @@ rescue
     0
 end
 
-# C con exito nil y si falla 0
+# c tiene 0 por lo que retorna el rescue
 def opcion_2
     c = begin
         a = [1, nil, 3, nil, 5, nil, 7, nil, 9, nil]
@@ -32,9 +32,10 @@ def opcion_2
     rescue
         0
     end
-    puts " c: #{c.inspect}"  # ¿porque c con cero?
+    puts " c: #{c.inspect}" 
 end
 
+# No es necesario el begin
 def opcion_3
     a = [1, nil, 3, nil, 5, nil, 7, nil, 9, nil]
     b = 3
@@ -42,7 +43,9 @@ def opcion_3
     puts " c: #{c.inspect}"
 end
 
-# falta begin
+
+# No es necesario el begin
+# el rescue retorna 0 y lo guarda en las posiciones que levantaron la excepcion
 def opcion_4
     a = [1, nil, 3, nil, 5, nil, 7, nil, 9, nil]
     b = 3

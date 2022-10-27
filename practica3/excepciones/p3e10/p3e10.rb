@@ -1,8 +1,13 @@
 
-dato = 0
+# Las variables globales no son una buena opción en este caso.
+# Lo que tenés que ver es la ubicación del bloque rescue, si no te conviene ubicarlo dentro del bloque del map.
 
 def sosUnNumero?(palabra)
-    ((palabra.scan(/[a-z]/i)).empty?) ? (return palabra.to_i) : (return palabra)  # Expresiones regulares
+    if (palabra != "") # Si nos mandan una linea vacia
+        ((palabra.scan(/[a-z]/i)).empty?) ? (return palabra.to_i) : (return palabra)  # Expresiones regulares
+    else
+        ""
+    end
 end
 
 def procesar_archivo(file)
@@ -15,21 +20,22 @@ def procesar_archivo(file)
     end
     contador = 0
     begin
-        coleccion_palabras.map do |dato|
-            $dato = dato
+        # No hacerlo con MAP e ir eliminando los elementos. El MAP retorna una nueva estructura y trabaja con ella
+        # Provocaria que dato siempre quede con el dato eliminado
+        coleccion_palabras.each do |dato|
             yield(dato)
             p dato
             contador+=1
-            coleccion_palabras.delete(dato)
+        rescue => mensaje
+            puts "Error encontrado: #{mensaje.message} #{$!.class}"
         end
-    rescue => mensaje
-        puts "Error encontrado: #{mensaje.message} #{$!.class}"
-        coleccion_palabras.delete($dato) # Las variables del iterador no tiene alcance
-        retry
-    ensure
-        puts "Total: #{contador}"  # Cuando termina de iterar mostramos el total
+    ensure # Si lo declaramos adentro del iterador se va a ejecutar mas de una vez
+        return contador # Retornamos la cantidad
     end
 end
 
-procesar_archivo('archivo') { |linea| Integer(linea) }
-#procesar_archivo('archivo') { |linea| p 5/linea }
+puts "Procesamos el ejemplo de la catedra: "
+puts (procesar_archivo('archivo') { |linea| Integer(linea) })
+puts ""
+puts "Procesamos otro ejemplo:"
+puts (procesar_archivo('archivo') { |linea| 5/linea })
