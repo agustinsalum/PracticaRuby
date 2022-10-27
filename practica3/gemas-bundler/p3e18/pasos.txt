@@ -1,7 +1,7 @@
 
 
-# "bundle gem" --> Crea el entorno
+# "bundle gem nombreGema" --> Crea el entorno
 # El codigo esta en lib/nombreGema.rb
-# Completar el archivo cantidadInvocaciones.gemspec
-# gem build cantidadInvocaciones.gemspec --> Se crea el archivo cantidadInvocaciones-0.1.0.gem
-# gem install cantidadInvocaciones-0.1.0.gem
+# Completar el archivo nombreGema.gemspec
+# gem build nombreGema.gemspec --> Se crea el archivo cantidadInvocaciones-0.1.0.gem
+# gem install nombreGema-0.1.0.gem
