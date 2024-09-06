@@ -32,7 +32,51 @@ apt update -qq
 ```
 
 ```
-apt install -y git \ build-essential \ autoconf \ bison \ curl \ lib{ssl,yaml,sqlite3}-dev \ libreadline{8,-dev} \ zlib1g{,-dev}
+sudo apt-get install build-essential
+```
+
+```
+sudo apt-get install autoconf
+```
+
+```
+sudo apt-get install bison
+```
+
+```
+sudo apt-get install curl
+```
+
+```
+sudo apt-get install libssl-dev
+```
+
+```
+sudo apt-get install libyaml-dev
+```
+
+```
+sudo apt-get install libsqlite3-dev
+```
+
+```
+sudo apt-get install libreadline8
+```
+
+```
+sudo apt-get install libreadline-dev
+```
+
+```
+sudo apt-get install zlib1g
+```
+
+```
+sudo apt-get install zlib1g-dev
+```
+
+```
+sudo apt-get install libpq-dev
 ```
 
 Una vez que se cuente con los requisitos, se puede proceder a realizar la instalación.
@@ -235,5 +279,3 @@ ruby ruta/al/archivo.rb
 plano, más allá de su extensión (o la ausencia de la misma); es decir que el script podría llamarse
 hello , hello.ruby o de cualquier otra manera, y sin importar eso si el archivo es de texto plano y el
 contenido es código Ruby válido, el intérprete lo ejecutará sin problemas.
-
-
